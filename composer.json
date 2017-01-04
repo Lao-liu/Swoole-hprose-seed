@@ -1,0 +1,29 @@
+{
+    "name": "lao-liu/swoole-hprose-seed",
+    "description": "Build a powerful webservice use hprose and swoole.",
+    "type": "project",
+    "require": {
+        "hprose/hprose-swoole": "^2.0",
+        "vlucas/phpdotenv": "^2.4",
+        "monolog/monolog": "^1.22"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Laoliu",
+            "email": "Laoliu@lanmv.com"
+        }
+    ],
+    "scripts": {
+        "genApi": "apigen generate -s app/services/ -d public/docs"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/helpers/init.php"
+        ]
+    },
+    "minimum-stability": "stable"
+}

@@ -1,0 +1,16 @@
+### Composer template
+composer.phar
+/vendor/
+### Phalcon template
+.phalcon/
+/cache/
+/config/development/
+### JetBrains template
+.idea
+### Swoole ide helper
+ide-helper/
+### Project ignore
+.env
+public/scripts/*
+public/docs/*
+

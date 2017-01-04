@@ -1,0 +1,8 @@
+{
+  "authors": [
+    "Laoliu <Laoliu@lanmv.com>"
+  ],
+  "dependencies": {
+    "hprose-html5": "^2.0.18"
+  }
+}
