@@ -7,7 +7,7 @@
     1. Hprose
     2. Swoole    
     3. Phalcon
-    4. Xxtea
+    4. Xxtea (启用xxtea加密过滤功能需要此扩展)
 
 
 ## 安装说明
