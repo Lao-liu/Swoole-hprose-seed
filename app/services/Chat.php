@@ -19,7 +19,7 @@ class Chat
     public function getAllUsers(stdClass $context)
     {
         Base::log("getAllUsers", [$context]);
-        $context->clients->idlist('message');
+        return $context->clients->idlist('message');
     }
 
     public function sendMessage($from, $to, $message, stdClass $context)

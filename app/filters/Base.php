@@ -15,11 +15,6 @@ use stdClass;
 
 class Base
 {
-    /**
-     * @param stdClass $context
-     *
-     * @return mixed
-     */
     static public function uuid(stdClass $context)
     {
         if(isset($context->userdata->uuid)){
@@ -30,24 +25,16 @@ class Base
         }
     }
 
-    /**
-     * @param stdClass $context
-     */
     static public function stat(stdClass $context) {
         if (isset($context->userdata->starttime)) {
             $t = microtime(true) - $context->userdata->starttime;
-            di('log')->info(self::uuid($context) . ' TimeStat', [$t]);
+            self::log(self::uuid($context) . ' TimeStat', [$t]);
         }
         else {
             $context->userdata->starttime = microtime(true);
         }
     }
 
-    /**
-     * @param        $message
-     * @param        $data
-     * @param string $type
-     */
     static public function log($message, $data, $type = 'info')
     {
         di('log')->$type($message, [$data]);

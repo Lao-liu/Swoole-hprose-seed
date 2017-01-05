@@ -5,7 +5,8 @@
     "require": {
         "hprose/hprose-swoole": "^2.0",
         "vlucas/phpdotenv": "^2.4",
-        "monolog/monolog": "^1.22"
+        "monolog/monolog": "^1.22",
+        "xxtea/xxtea": "^1.0"
     },
     "license": "MIT",
     "authors": [

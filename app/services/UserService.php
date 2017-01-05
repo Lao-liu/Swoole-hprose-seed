@@ -17,28 +17,28 @@ class UserService
     {
         return [
             0 => [
-                "name" => "laoliu",
-                "age" => 37,
+                "name" => "user1",
+                "age" => 32,
                 "sex" => "男"
             ],
             1 => [
-                "name" => "laoliu",
-                "age" => 37,
-                "sex" => "男"
+                "name" => "user2",
+                "age" => 33,
+                "sex" => "女"
             ],
             2 => [
-                "name" => "laoliu",
-                "age" => 37,
+                "name" => "user3",
+                "age" => 24,
                 "sex" => "男"
             ],
             3 => [
-                "name" => "laoliu",
-                "age" => 37,
-                "sex" => "男"
+                "name" => "user4",
+                "age" => 25,
+                "sex" => "女"
             ],
             4 => [
-                "name" => "laoliu",
-                "age" => 37,
+                "name" => "user5",
+                "age" => 26,
                 "sex" => "男"
             ],
         ];

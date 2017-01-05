@@ -1,10 +1,12 @@
 <?php
 
 use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Mvc\View\Simple as View;
 use Phalcon\Queue\Beanstalk as Queue;
-use Monolog\Handler\StreamHandler;
+use Phalcon\Cache\Backend\File as BackFile;
+use Phalcon\Cache\Frontend\Output as FrontOutput;
 
 /**
  * Shared configuration service
@@ -78,5 +80,20 @@ $di->setShared('queue', function(){
     ]);
 
     return $queue;
+});
+/**
+ * Cache
+ */
+$di->setShared('cache', function(){
+    $frontCache = new FrontOutput([
+        "lifetime" => 3600,
+    ]);
+
+    $cache = new BackFile(
+        $frontCache,
+        ["cacheDir" => STORAGE_PATH . "/cache/",]
+    );
+
+    return $cache;
 });
 

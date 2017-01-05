@@ -11,8 +11,8 @@
 
 namespace App\Filters;
 
-use Hprose\Filter;
 use stdClass;
+use Hprose\Filter;
 
 class Cache implements Filter
 {

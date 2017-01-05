@@ -22,25 +22,22 @@ class ChatPublishWebSocketService
     static public function publish()
     {
         if(!extension_loaded('swoole')){
-            throw new Exception("This application must running on Swoole extension...");
+            throw new Exception("This application need Swoole extension...");
         }
 
         $server = new WebSocketServer("ws://192.168.1.25:5555");
         $server->passContext = true;
         $server->debug = true;
-//        $server->onAccept = 'App\Services\ChatEvents::accept';
-//        $server->onClose = 'App\Services\ChatEvents::close';
-        $server->onError = 'App\Services\ChatEvents::error';
         $server->publish('message');
         $server->publish('updateUsers');
         $server->addInstanceMethods(new Chat(), '', '', ['oneway' => true]);
-        $server->onSubscribe = function($topic, $id) use ($server){
-            Base::log('onSubscribe', ["topic" => $topic, "id"=>$id, "server"=>$server]);
-            ChatSubscribe::subscribe($id, $server);
+        $server->onSubscribe = function($topic, $id, $service){
+            Base::log('onSubscribe', ["topic" => $topic, "id"=>$id, "service"=>$service]);
+            ChatSubscribe::subscribe($topic, $id, $service);
         };
-        $server->onUnsubscribe = function($topic, $id) use ($server){
+        $server->onUnsubscribe = function($topic, $id, $service){
             Base::log('onUnsubscribe', ["topic" => $topic, "id"=>$id]);
-            ChatSubscribe::unSubscribe($id, $server);
+            ChatSubscribe::unSubscribe($topic, $id, $service);
         };
 
         return $server->start();

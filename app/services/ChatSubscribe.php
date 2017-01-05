@@ -11,19 +11,25 @@
 
 namespace App\Services;
 
-use Hprose\Swoole\WebSocket\Server;
+use Hprose\Service;
 
 class ChatSubscribe
 {
-    static public function subscribe($id, Server $server)
+    static public function subscribe($topic, $id, Service $service)
     {
-        $server->push('message', $id . ' is online.');
-        $server->push('updateUsers', $server->idlist('message'));
+        if($topic == 'message'){
+            $service->push('message', $id . ' is online.');
+        } else {
+            $service->push('updateUsers', $service->idlist('message'));
+        }
     }
 
-    static public function unSubscribe($id, Server $server)
+    static public function unSubscribe($topic, $id, Service $service)
     {
-        $server->push('message', $id . ' is offline.');
-        $server->push('updateUsers', $server->idlist('message'));
+        if($topic == 'message'){
+            $service->push('message', $id . ' is offline.');
+        } else {
+            $service->push('updateUsers', $service->idlist('message'));
+        }
     }
 }

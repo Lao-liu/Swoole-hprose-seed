@@ -16,13 +16,25 @@ use stdClass;
 
 class Xxtea implements Filter
 {
+    const ENCRYPTION_KEY = '5AB485E2E3D7901A';
+
     public function inputFilter($data, stdClass $context)
     {
-        return $data;
+        try {
+            $data = xxtea_decrypt(base64_decode($data), self::ENCRYPTION_KEY);
+            return $data;
+        } catch (\Exception $e) {
+            throw new("Request parameter decryption failed");
+        }
     }
 
     public function outputFilter($data, stdClass $context)
     {
-        return $data;
+        try {
+            $data = base64_encode(xxtea_encrypt($data, self::ENCRYPTION_KEY));
+            return $data;
+        } catch (\Exception $e) {
+            throw new("Request parameter decryption failed");
+        }
     }
 }
