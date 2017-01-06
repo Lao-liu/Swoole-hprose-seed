@@ -36,7 +36,7 @@ var client = hprose.Client.create('ws://192.168.1.25:5555/', ['getAllUsers', 'se
 ### 运行示例
 
     1. 使用Apache或Nginx，将前端访问目录指向至 `hproseApi/public` 目录
-    2. 在 hproseApi 目录下运行 php server.php
+    2. 在 hproseApi 目录下运行 php server.php 启动Swoole后端
 
 ### 项目结构
 
